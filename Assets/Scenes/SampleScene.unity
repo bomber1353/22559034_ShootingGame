@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527b4d38859e3fb449f3191b0f26ee30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialBG: {fileID: 0}
+  materialBG: {fileID: 2100000, guid: e78658709820f1d4092e981bc3bcbfd1, type: 2}
   scrollSpd: 0.2
 --- !u!64 &209466244
 MeshCollider:
