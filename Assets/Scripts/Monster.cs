@@ -34,7 +34,7 @@ public class Monster : MonoBehaviour
         if(collision.gameObject.tag == "Bullet")
         {
             
-            GameObject gameManager = GameObject.Find("GameManager");
+            GameObject gameManager = GameObject.Find("ScoreManager");
             
             ScoreManager scoreManager = gameManager.GetComponent<ScoreManager>();
             //1점 추가
@@ -51,10 +51,8 @@ public class Monster : MonoBehaviour
                 PlayerPrefs.SetInt("BestScore", scoreManager.bestScore);
             }
             
-
             GameObject explosionObj = Instantiate(prefabsExplosion);
             explosionObj.transform.position = transform.position;
-
 
             Destroy(collision.gameObject);
             Destroy(gameObject);
