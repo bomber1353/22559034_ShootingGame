@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CharacterMove : MonoBehaviour
 {
 
     public float spd = 5;
+    public GameObject prefabsExplosion;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +27,18 @@ public class CharacterMove : MonoBehaviour
 
         //transform.Translate(direct * spd * Time.deltaTime);
         transform.position = transform.position + direct * spd * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.tag == "Tank")
+        {
+            GameObject explosionObj = Instantiate(prefabsExplosion);
+            explosionObj.transform.position = transform.position;
+            Destroy(gameObject);
+
+            
+        }
     }
 }
