@@ -8,7 +8,7 @@ public class CharacterMove : MonoBehaviour
 
     public float spd = 5;
     public GameObject prefabsExplosion;
-    public GameObject GameOver;
+    public UIManager uimanager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,21 +32,12 @@ public class CharacterMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Tank")
         {
             GameObject explosionObj = Instantiate(prefabsExplosion);
             explosionObj.transform.position = transform.position;
             gameObject.SetActive(false);
-            StartCoroutine(GameOverPanel());
-            
+            uimanager.GameOverUI();
         }
-    }
-
-    IEnumerator GameOverPanel()
-    {
-        yield return new WaitForSeconds(1f);
-            GameOver.SetActive(true);
-            Time.timeScale = 0;
     }
 }
