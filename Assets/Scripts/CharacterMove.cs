@@ -8,6 +8,7 @@ public class CharacterMove : MonoBehaviour
 
     public float spd = 5;
     public GameObject prefabsExplosion;
+    public GameObject GameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +37,16 @@ public class CharacterMove : MonoBehaviour
         {
             GameObject explosionObj = Instantiate(prefabsExplosion);
             explosionObj.transform.position = transform.position;
-            Destroy(gameObject);
-
+            gameObject.SetActive(false);
+            StartCoroutine(GameOverPanel());
             
         }
+    }
+
+    IEnumerator GameOverPanel()
+    {
+        yield return new WaitForSeconds(1f);
+            GameOver.SetActive(true);
+            Time.timeScale = 0;
     }
 }
